@@ -12,7 +12,7 @@
 
   <div class="row">
     <div class="col-md-6 text-center">
-      <p>Filtered: Origin confirmed && Revision Confirmed</p>
+      <p>Filtered: Origin confirmed</p>
       <p>Default sort: Revision window end desc</p>
     </div>
     <div class="col-md-6 text-center">
@@ -29,8 +29,8 @@
           <thead>
             <tr>
               <!-- <th>Origin Conf</th> -->
-              <!-- <th>R. Constr</th>
-        <th>R. Conf</th> -->
+              <!-- <th>R. Constr</th>-->
+              <th>Revision Conf</th>
               <th>Proof Constr</th>
               <th>Proof Conf</th>
               <th>Status</th>
@@ -48,7 +48,7 @@
               <th>Payout</th>
             </tr>
             <tr class="result">
-              <!-- <th>-</th> -->
+              <th>-</th>
               <!-- <th>-</th>
         <th>-</th> -->
               <th>-</th>
@@ -70,8 +70,8 @@
           </thead>
           <tr v-for="obligation in ordered">
             <!-- <td>{{obligation.originconfirmed | boolean }} </td> -->
-            <!-- <td>{{obligation.revisionconstructed | boolean }} </td>
-      <td>{{obligation.revisionconfirmed | boolean }} </td> -->
+            <!-- <td>{{obligation.revisionconstructed | boolean }} </td> -->
+      <td>{{obligation.revisionconfirmed | boolean }} </td>
             <td>{{obligation.proofconstructed | boolean }} </td>
             <td>{{obligation.proofconfirmed | boolean }} </td>
             <td :class="status(obligation.obligationstatus)">{{status(obligation.obligationstatus)}}</td>
@@ -113,7 +113,7 @@ export default {
     },
     ordered() {
       return _.orderBy(_.filter(this.obligations, function(o) {
-        return o.revisionconfirmed && o.originconfirmed
+        return o.originconfirmed
       }), (o) => o.revisiontransactionset[0].filecontractrevisions[0].newwindowend, 'desc')
       //   return _.orderBy(this.obligations, 'obligationstatus', 'desc')
     }
