@@ -120,7 +120,7 @@ export default {
   },
   methods: {
     load() {
-      window.axios.get('/static/obligations.json').then((response) => {
+      window.axios.get('./static/obligations.json').then((response) => {
         this.obligations = response.data.obligations
       })
     },
